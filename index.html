@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c3f48">
+  <title>奇美急診壅塞儀表板</title>
+  <meta name="description" content="彙整中央健康保險署公開資料，比較永康奇美與成大醫院急診待住院、待加護病房人數與全台排名。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c3f48'/%3E%3Cpath d='M14 6h4v8h8v4h-8v8h-4v-8H6v-4h8z' fill='%23ffffff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="header-copy">
+        <p class="eyebrow">重度級急救責任醫院 · 非官方彙整</p>
+        <h1>奇美急診壅塞儀表板</h1>
+        <p id="data-meta" class="meta" aria-live="polite">資料載入中…</p>
+        <p id="rank-note" class="meta note"></p>
+      </div>
+      <div class="date-control">
+        <label for="date-select">檢視日期</label>
+        <select id="date-select" disabled>
+          <option>載入中</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <noscript>
+      <p class="panel noscript">此儀表板需要 JavaScript 才能讀取每日資料。</p>
+    </noscript>
+
+    <section aria-labelledby="compare-heading">
+      <div class="section-title">
+        <h2 id="compare-heading">重點比較</h2>
+        <p>待住院與待加護病房，並與前一日比較。</p>
+      </div>
+      <div id="compare" class="compare"></div>
+    </section>
+
+    <section aria-labelledby="rank-heading">
+      <div class="section-head">
+        <div class="section-title">
+          <h2 id="rank-heading">全台排名</h2>
+          <p id="bar-caption">僅列出有回報人數的醫院。</p>
+        </div>
+        <div class="segment" role="tablist" aria-label="排名指標">
+          <button type="button" id="tab-ward" role="tab" aria-selected="true" aria-controls="bars">待住院</button>
+          <button type="button" id="tab-icu" role="tab" aria-selected="false" aria-controls="bars">待加護病房</button>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="legend" aria-hidden="true">
+          <span class="lg lg-chimei">永康奇美</span>
+          <span class="lg lg-ncku">成大醫院</span>
+          <span class="lg lg-other">其他醫院</span>
+        </div>
+        <div id="bars" class="bar-scroll" role="tabpanel" tabindex="0" aria-label="全台排名長條圖，可捲動"></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="trend-heading">
+      <div class="section-title">
+        <h2 id="trend-heading">趨勢</h2>
+        <p>永康奇美與成大醫院在所有可用日期的每日人數。</p>
+      </div>
+      <div id="trends" class="trends"></div>
+    </section>
+
+    <section aria-labelledby="table-heading">
+      <div class="section-head">
+        <div class="section-title">
+          <h2 id="table-heading">全台醫院</h2>
+          <p id="table-count">可依欄位排序。人數為 0 不顯示排名。</p>
+        </div>
+        <div class="search-control">
+          <label for="search">搜尋醫院名稱</label>
+          <input id="search" type="search" placeholder="搜尋醫院名稱" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+      <div id="table-host" class="panel table-panel"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>資料來源為衛生福利部中央健康保險署公開資料，每日台北時間約 07:00 更新，本頁為非官方彙整，僅供內部管理參考。</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
